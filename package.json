@@ -9,13 +9,13 @@
     "test:first": "npx playwright test --grep @first",
     "test:local": "BASE_URL=http://localhost:4200 npx playwright test",
     "test:report": "npx playwright test && npx playwright show-report",
-    "test:ui": "npx playwright test --ui"
+    "test:ui": "npx playwright test --grep @first --ui"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.47.2",
+    "@playwright/test": "^1.51.1",
     "@types/node": "^22.7.4",
     "dotenv": "^16.4.5"
   }

@@ -1,0 +1,108 @@
+When working with Playwright and TypeScript, following a consistent and clear naming convention is crucial for maintaining a clean, scalable, and readable codebase. Below are some best practices for naming conventions in Playwright with TypeScript:
+
+### 1. **File and Folder Naming Conventions**
+   - **Pages**: Use **PascalCase** for Page Object Model (POM) files, as it represents a class and is easier to identify.
+     - Example: `LoginPage.ts`, `ProductPage.ts`, `CartPage.ts`
+   
+   - **Tests**: Use **kebab-case** or **snake_case** for test file names, as it improves readability and is a common convention for test files.
+     - Example: `login.spec.ts`, `checkout-flow.spec.ts`, `user-profile.spec.ts`
+   
+   - **Interactions/Service Classes**: Use **PascalCase** for interaction/service files, as these represent actions and encapsulate business logic.
+     - Example: `LoginInteraction.ts`, `ProductActions.ts`, `CartService.ts`
+
+   - **Helper/Utility Files**: Use **camelCase** or **snake_case** for utility files or helper functions.
+     - Example: `utils.ts`, `helperFunctions.ts`, `waitForElement.ts`
+   
+   - **Configuration Files**: For config files, use **snake_case** or **kebab-case** as it’s common for configuration-related files.
+     - Example: `playwright.config.ts`, `test-config.ts`, `base-url.ts`
+
+### 2. **Class Naming Conventions**
+   - **Page Classes**: Use **PascalCase** for naming page object classes. The class name should reflect the page or section of the application.
+     - Example: `LoginPage`, `ProductPage`, `CartPage`
+   
+   - **Interaction/Service Classes**: Use **PascalCase** for action or service classes, and name them based on the business logic they represent.
+     - Example: `LoginInteraction`, `ProductActions`, `CartService`
+
+### 3. **Method and Function Naming Conventions**
+   - **Action Methods**: Use **camelCase** for methods representing actions or interactions. Use verbs to clearly describe the action.
+     - Example: `login()`, `addToCart()`, `submitForm()`, `navigateToHome()`
+   
+   - **Helper Methods**: Use **camelCase** for helper or utility methods that perform a specific function, such as waiting or checking conditions.
+     - Example: `waitForElement()`, `clearFields()`, `generateRandomString()`
+   
+   - **Getter Methods**: For methods that return elements or values, name them with a **get** prefix.
+     - Example: `getLoginButton()`, `getCartItems()`
+
+### 4. **Element Locator Naming**
+   - Use **camelCase** for variables holding locators or elements in Page Objects and interactions. Name the variables based on the purpose of the element.
+     - Example: `signInButton`, `emailInput`, `loginErrorMessage`, `productTitle`
+   
+   - **Collections of Elements**: For locators representing multiple elements (e.g., a list of items), use plural names.
+     - Example: `productList`, `cartItems`, `productCards`
+   
+   - **Data-Driven Locators**: If locators are driven by dynamic data (e.g., a product name or ID), use a more descriptive name.
+     - Example: `getProductCardByName(productName)`, `getItemById(itemId)`
+
+### 5. **Test Naming Conventions**
+   - **Descriptive Test Names**: Test names should describe the scenario being tested. Use **snake_case** or **kebab-case** to separate words in the test name.
+     - Example: `should_login_with_valid_credentials()`, `should_add_product_to_cart()`, `should_display_error_message_for_invalid_login()`
+   
+   - **Grouping Tests**: When grouping tests (e.g., for a feature), use **describe** blocks and ensure the names are consistent with the functionality being tested.
+     - Example:
+       ```typescript
+       describe('Login functionality', () => {
+         test('should login with valid credentials', async () => { /* test logic */ });
+         test('should display error for invalid credentials', async () => { /* test logic */ });
+       });
+       ```
+
+### 6. **Test Assertions and Validation**
+   - **Use Action-Based Names**: When naming assertion or validation methods, use verbs that clearly indicate the action being checked.
+     - Example: `assertElementVisible()`, `checkLoginErrorMessage()`, `validateProductAddedToCart()`
+
+### 7. **Environment Variables and Constants**
+   - **Environment Variables**: Use **UPPER_SNAKE_CASE** for environment variables, which is the standard convention for environment configurations.
+     - Example: `BASE_URL`, `LOGIN_TIMEOUT`, `MAX_RETRIES`
+   
+   - **Constants**: Use **UPPER_SNAKE_CASE** for constants that don’t change, such as URLs, timeouts, and other configuration values.
+     - Example: `DEFAULT_TIMEOUT = 5000`, `LOGIN_URL = "https://example.com/login"`
+
+### 8. **Using Abbreviations and Acronyms**
+   - Avoid using unnecessary abbreviations unless they are commonly accepted or widely used in the domain.
+     - Example: Use `signInButton` instead of `btnSignIn` (as “btn” is redundant).
+   
+   - If using acronyms in names, ensure they are consistently capitalized.
+     - Example: `APIResponse`, `HTTPStatusCode`
+
+### 9. **Example Folder Structure with Naming Conventions**
+
+```plaintext
+/project-root
+  ├── /pages
+  │    ├── LoginPage.ts           # Page objects with locators and basic interactions
+  │    ├── ProductPage.ts         # Page objects for different sections of the app
+  │    └── CartPage.ts            # More pages
+  ├── /interactions
+  │    ├── LoginInteraction.ts    # Contains business logic for login actions
+  │    ├── ProductActions.ts     # Interactions related to products
+  │    └── CartService.ts        # Interactions related to cart actions
+  ├── /tests
+  │    ├── login.spec.ts         # Test file for login tests
+  │    ├── checkout-flow.spec.ts # Tests for checkout flow
+  │    └── product.spec.ts       # Tests for product actions
+  ├── /utils
+  │    ├── waitForElement.ts     # Utility for waiting for elements
+  │    └── helpers.ts            # Helper functions for repeated actions
+  ├── /config
+  │    └── playwright.config.ts  # Configuration for Playwright
+  └── package.json
+```
+
+---
+
+### Final Recommendations:
+1. **Consistency**: Stick to the chosen naming conventions across the entire project for consistency. It makes the codebase easier to read and maintain.
+2. **Clarity**: Choose names that clearly describe the purpose of variables, methods, and classes. Avoid cryptic or overly abbreviated names.
+3. **Scalability**: As your project grows, a clear naming structure will help prevent confusion and help developers understand the code faster.
+
+Following these best practices will enhance the maintainability, readability, and scalability of your Playwright TypeScript framework.
